@@ -613,11 +613,15 @@ extension DropDown {
 			constant: 0)
 		addConstraint(xConstraint)
 
+        var topItem: Any = self
+        if #available(iOS 11.0, *) {
+            topItem = self.safeAreaLayoutGuide
+        }
 		yConstraint = NSLayoutConstraint(
 			item: tableViewContainer,
 			attribute: .top,
 			relatedBy: .equal,
-			toItem: self,
+			toItem: topItem,
 			attribute: .top,
 			multiplier: 1,
 			constant: 0)
